@@ -14,4 +14,15 @@
     out how to build it, and I do hope it is enjoyed by those who find and utilize it! Any suggestions to code modification,
     such as condensing and simplifying, would be greatly considered!
 
+## The current way to install custconsole is by using the following `pip` command:
+### Windows
+  ```
+  python -m pip install --index-url https://test.pypi.org/simple/ --no-deps custconsole
+  ```
+
+### MacOS / Linux
+  ```
+  python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps custconsole
+  ```
+
 #### And of course, thanks for checking out the repo!
