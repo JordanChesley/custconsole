@@ -17,12 +17,12 @@
 ## The current way to install custconsole is by using the following `pip` command (in a virtual environment):
 ### Windows
   ```
-  python -m pip install --index-url https://test.pypi.org/simple/ --no-deps custconsole
+  python -m pip install --index-url https://test.pypi.org/simple/ custconsole
   ```
 
 ### MacOS / Linux
   ```
-  python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps custconsole
+  python3 -m pip install --index-url https://test.pypi.org/simple/ custconsole
   ```
 
 #### And of course, thanks for checking out the repo!
