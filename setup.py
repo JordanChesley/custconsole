@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
   name='custconsole',
-  version='0.0.2',
+  version='0.0.4',
   description='Create a customizable console(s) for your program.',
   author='Jordan Chesley',
   author_email='jordan.r.chesley@gmail.com',
