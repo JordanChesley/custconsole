@@ -12,7 +12,7 @@ CustConsole is a Python module that helps programmers design a customizable cons
 
 You can find [CustConsole's documentation here]().
 
-You can also visit the repository [here](https://github.com/JordanChesley/custconsole).
+You can also [visit the repository here](https://github.com/JordanChesley/custconsole).
 
 
 
