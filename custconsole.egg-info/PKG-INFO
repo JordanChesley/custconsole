@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: custconsole
+Version: 0.0.4
+Summary: Create a customizable console(s) for your program.
+Home-page: https://github.com/JordanChesley/custconsole
+Author: Jordan Chesley
+Author-email: jordan.r.chesley@gmail.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
