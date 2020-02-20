@@ -15,22 +15,23 @@ import time
 from .errors import InvalidCommandParam, UnknownCommandError, DuplicateCommandError, BadLogoutCall, ArgumentError
 
 class custconsole():
-  """Creates an instance of the custom console.
+  """
+  Creates an instance of the custom console.
      
-     Parameters:
-     -----------
-     ``name : str [Optional]``
-          The name of the console. This is defaulted to 'Custom
-          Console'.
+  Parameters
+  ----------
+  name: Optional[:class:`str`]
+      The name of the console. This is defaulted to 'Custom
+      Console'.
      
-     ``author : str [Optional]``
-          The name of the author writing the console e.g. your
-          name or nickname. This is defaulted to NoneType.
+  author: Optional[:class:`str`]
+      The name of the author writing the console e.g. your
+      name or nickname. This is defaulted to NoneType.
      
-     ``version : str [Optional]``
-          The version number of your console. This number should
-          be regularly updated in relevance to the amount of
-          updates you've implemented. This is defaulted to '0.1'.
+  version: Optional[:class:`str`]
+      The version number of your console. This number should
+      be regularly updated in relevance to the amount of
+      updates you've implemented. This is defaulted to '0.1'.
   """
 
   def __init__(self, **attrs):
@@ -59,26 +60,27 @@ class custconsole():
     self.visible_commands = {}
   
   def auth_user(self, username=None, pwd=None):
-    """Checks to make sure the user enters the right credentials\n
-       during login before giving access to the account.
+    """
+    Checks to make sure the user enters the right credentials
+    during login before giving access to the account.
        
-       Parameters:
-       -----------
-       ``username : str [Optional]``
-            The username of the account to verify.
+    Parameters
+    ----------
+    username: Optional[:class:`str`]
+        The username of the account to verify.
 
-       ``pwd : str [Optional]``
-            The user's login password. This should normally be
-            left blank so that the user verifies their password.
+    pwd: Optional[:class:`str`]
+        The user's login password. This should normally be
+        left blank so that the user verifies their password.
 
-       Returns:
-       --------
-       ``bool``
-            Returns 'True' if the user's input matches their
-            credentials and therefore are authorized.
+    Returns
+    -------
+    :class:`bool`
+        Returns 'True' if the user's input matches their
+        credentials and therefore are authorized.
 
-            Returns 'False' if the user's input doesn't match
-            their credentials and therefore aren't authorized.
+        Returns 'False' if the user's input doesn't match
+        their credentials and therefore aren't authorized.
     """
 
     # If we receive the default parameter values, let's have the
@@ -120,19 +122,20 @@ class custconsole():
     return False
 
   def register_user(self, username=None, pwd=None):
-    """Register an account to login to the console.
+    """
+    Register an account to login to the console.
             
-       This is automatically called by the console when there's\n
-       no available users to login to the console. This can also\n
-       be manually called by the user.
+    This is automatically called by the console when there's
+    no available users to login to the console. This can also
+    be manually called by the user.
 
-       Parameters:
-       -----------
-       ``username : str [Optional]``
-          The username wished to be registered.
+    Parameters
+    ----------
+    username: Optional[:class:`str`]
+        The username wished to be registered.
           
-       ``pwd : str [Optional]``
-          The password wished to be used to login to the user.
+    pwd: Optional[:class:`str`]
+        The password wished to be used to login to the user.
     """
 
     print('')
@@ -193,18 +196,19 @@ class custconsole():
       self.register_user(username, pwd)
 
   def login(self, auto_reg=True):
-    """Prompt a user to login to the console.
+    """
+    Prompt a user to login to the console.
        
-       If no user exists in the console, then this function\n
-       automatically calls the register_user() function. 
+    If no user exists in the console, then this function
+    automatically calls the :meth:`register_user()` function. 
 
-       Parameters:
-       -----------
-       ``auto_reg : bool [Optional]``
-          Toggles auto-registration if the console has no
-          registered user in it. This is automatically set
-          to True. If you do NOT want the console to create
-          a user, then set this to False.
+    Parameters
+    ----------
+    auto_reg: Optional[:class:`bool`]
+        Toggles auto-registration if the console has no
+        registered user in it. This is automatically set
+        to True. If you do NOT want the console to create
+        a user, then set this to False.
     """
 
     if auto_reg:
@@ -236,21 +240,22 @@ class custconsole():
         print('Incorrect username or password.')
   
   def logout(self, force_auth=False):
-    """Log out the current console user.
+    """
+    Log out the current console user.
        
-       Parameters:
-       -----------
-       ``force_auth : bool [Optional]``
-            Optional parameter. Force the user to authorize
-            themselves to confirm their action. This is
-            automatically set to False.
+    Parameters
+    ----------
+    force_auth: Optional[:class:`bool`]
+        Optional parameter. Force the user to authorize
+        themselves to confirm their action. This is
+        automatically set to False.
       
-       Raises:
-       -------
-       ``BadLogoutCall``
-            Raised when this method is called while no one is
-            logged into the console. This will attempt to
-            force the console to quit.
+    Raises
+    ------
+    BadLogoutCall
+        Raised when this method is called while no one is
+        logged into the console. This will attempt to
+        force the console to quit.
     """
     if self.current_user == None:
       raise BadLogoutCall
@@ -268,19 +273,20 @@ class custconsole():
 
 
   def spin(self, text, spins):
-    """Create a fancy looking spinner for your console.
+    """
+    Create a fancy looking spinner for your console.
        
-       Parameters:
-       -----------
-       ``text : str``
-            This is the text that you want to display next to
-            the spinner. This function will automatically
-            place a ' ' space next to the text.
+    Parameters
+    ----------
+    text: :class:`str`
+        This is the text that you want to display next to
+        the spinner. This function will automatically
+        place a ' ' space next to the text.
        
-       ``spins : int``
-            The amount of times you want the spinner to spin.
-            To help determine the number of spins, the spinner
-            spins a full rotation in 0.4 seconds.
+    spins: :class:`int`
+        The amount of times you want the spinner to spin.
+        To help determine the number of spins, the spinner
+        spins a full rotation in 0.4 seconds.
     """
     animation = ["/", "-", "\\", "|"]
     end = ""
@@ -293,21 +299,22 @@ class custconsole():
     print("\r  ", end=end + "\r")
 
   def encrypt(self, target):
-    """Encrypt an object.
+    """
+    Encrypt an object.
 
-       Parameters:
-       -----------
-       ``target : str``
-            The object that is being encrypted.
+    Parameters
+    ----------
+    target: :class:`str`
+        The object that is being encrypted.
        
-       Returns:
-       --------
-       ``bytes``
-            Encrypted object.
+    Returns
+    -------
+    :class:`bytes`
+        Encrypted object.
        
-       ``bytes``
-            Key used to encrypt the object. This key should be
-            used to decrypt the same target.
+    :class:`bytes`
+        Key used to encrypt the object. This key should be
+        used to decrypt the same target.
     """
 
     # Fernet makes a randomly generated key. We then use that key
@@ -318,20 +325,21 @@ class custconsole():
     return enc, key
   
   def decrypt(self, target, key):
-    """Decrypt an object with the key used to encrypt it.
+    """
+    Decrypt an object with the key used to encrypt it.
 
-       Arguments:
-       ----------
-       ``target : bytes``
-            The object that is being decrypted.
+    Parameters
+    ----------
+    target: :class:`bytes`
+        The object that is being decrypted.
       
-       ``key : bytes``
-            The key used to encrypt the given target.
+    key: :class:`bytes`
+        The key used to encrypt the given target.
 
-       Returns:
-       --------
-       ``str``
-            Decrypted object.
+    Returns
+    -------
+    :class:`str`
+        Decrypted object.
     """
 
     # We pass our generated key to Fernet so it can
@@ -341,33 +349,35 @@ class custconsole():
     return dyc
   
   def help(self):
-    """Print a list of commands to the console.
+    """
+    Print a list of commands to the console.
        
-       These commands are listed by name and description. The
-       name is either the name of the function or the value of
-       the 'name' kwarg (if set). The description is either the
-       function's docstring or the 'description' kwarg (if set).
-       It is recommended that a 'description' kwarg is set up.
+    These commands are listed by name and description. The
+    name is either the name of the function or the value of
+    the 'name' kwarg (if set). The description is either the
+    function's docstring or the 'description' kwarg (if set).
+    It is recommended that a 'description' kwarg is set up.
     """
     # Run the __init__ of the Help class, passing the command
     # dictionary.
     Help(self.visible_commands)
 
   def _add_command(self, command, hidden):
-    """Adds a command to the console's command list.
-       This should never be called manually.
+    """
+    Adds a command to the console's command list.
+    This should never be called manually.
        
-       Parameters:
-       -----------
-       ``command : class <Commands>``
-            The command that's being added. Must be formatted
-            with the 'Commands' class. 
+    Parameters
+    ----------
+    command: :class:`.Commands`
+        The command that's being added. Must be formatted
+        with the 'Commands' class. 
        
-       Raises:
-       -------
-       ``DuplicateCommandError``
-          Raised when more than one instance of a command is
-          created.
+    Raises
+    ------
+    DuplicateCommandError
+        Raised when more than one instance of a command is
+        created.
     """
 
     if command.name in self.commands:
@@ -383,18 +393,19 @@ class custconsole():
 
 
   def remove_command(self, command):
-    """Removes a command from the console's command list.
+    """
+    Removes a command from the console's command list.
        
-       Parameters:
-       -----------
-       ``command : str``
-          Name of the command to be removed.
+    Parameters
+    ----------
+    command: :class:`str`
+        Name of the command to be removed.
        
-       Raises:
-       -------
-       ``UnknownCommandError``
-          Raised when the given command doesn't exist in
-          the internal command list.
+    Raises
+    ------
+    UnknownCommandError
+        Raised when the given command doesn't exist in
+        the internal command list.
     """
 
     try:
@@ -404,19 +415,20 @@ class custconsole():
       raise UnknownCommandError(command)
 
   def _alphabetize_commands(self, command_list, list_id):
-    """We use this function to list our commands in alphabetical
-       order. This should never be called manually.
+    """
+    We use this function to list our commands in alphabetical
+    order. This should never be called manually.
 
-       Parameters:
-       -----------
-       ``command_list : dict``
-          This is the command list holding the custom commands.
-          This is normally custconsole.commands.
+    Parameters
+    ----------
+    command_list: :class:`dict`
+        This is the command list holding the custom commands.
+        This is normally custconsole.commands.
        
-       ``list_id : int``
-          Tells what list to manipulate:
-            1 = self.commands
-            2 = self.visible_commands
+   list_id: :class:`int`
+        Tells what list to manipulate:
+          1 = self.commands
+          2 = self.visible_commands
     """
 
     ordered_list = {}
@@ -431,28 +443,29 @@ class custconsole():
       self.visible_commands = ordered_list
 
   def _parse_command(self, command_string):
-    """Parse the given command into the command name, arguments,
-       and keyword arguments. This function is called by the
-       custconsole.invoke_command() function and should not be
-       called manually.
+    """
+    Parse the given command into the command name, arguments,
+    and keyword arguments. This function is called by the
+    :meth:`custconsole.invoke_command()` function and should not be
+    called manually.
 
-       Parameters:
-       -----------
-       ``command_string`` : str
-          This is the string passed into custconsole.invoke_command().
-          This is normally the console user's input.
+    Parameters
+    ----------
+    command_string: :class:`str`
+        This is the string passed into custconsole.invoke_command().
+        This is normally the console user's input.
        
-       Returns:
-       --------
-       ``str``
-          The name of the command, but not the actual command instance.
+    Returns
+    -------
+    :class:`str`
+        The name of the command, but not the actual command instance.
        
-       ``list``
-          List of arguments (not keyword arguments) to be passed to the
-          command.
+    :class:`list`
+        List of arguments (not keyword arguments) to be passed to the
+        command.
        
-       ``dict``
-          Dictionary of keyword arguments to be passed to the command.
+    :class:`dict`
+        Dictionary of keyword arguments to be passed to the command.
     """
 
     # Separate the command and the parameters.
@@ -510,22 +523,23 @@ class custconsole():
 
   
   def invoke_command(self, command_string):
-    """Executes the given command. This is usually the console user's
-       input.
+    """
+    Executes the given command. This is usually the console user's
+    input.
        
-       Parameters:
-       -----------
-       ``command_string : str``
-            The command and any parameters passed into the command.
+    Parameters
+    ----------
+    command_string: :class:`str`
+        The command and any parameters passed into the command.
        
-       Raises:
-       -------
-       ``UnknownComandError``
-          Raised when the user calls for a command not found in the
-          internal command list.
+    Raises
+    ------
+    UnknownCommandError
+        Raised when the user calls for a command not found in the
+        internal command list.
        
-       ``ArgumentError``
-          Raised when too many or too little arguments are given.
+    ArgumentError
+        Raised when too many or too little arguments are given.
     """
 
     # custconsole._parse_command() returns 3 objects so we assign
@@ -564,24 +578,25 @@ class custconsole():
         raise ArgumentError(command, errmsg[6], errmsg[2])
 
   def command(self, name=None, hidden=False, *args, **kwargs):
-    """A decorator used to define custom commands for your console.
+    """
+    A decorator used to define custom commands for your console.
 
-       Parameters:
-       -----------
-       ``name : str [Optional]``
-          Name of the command. This is defaulted to the function name.
+    Parameters
+    ----------
+    name: Optional[:class:`str`]
+        Name of the command. This is defaulted to the function name.
        
-       ``description : str [Optional]``
-          Command's description. This will default to the function's
-          docstring. If a docstring is not provided, it will then
-          default to 'No description provided.'
+    description: Optional[:class:`str`]
+        Command's description. This will default to the function's
+        docstring. If a docstring is not provided, it will then
+        default to 'No description provided.'
        
-       ``hidden : bool [Optional]``
-          Controls if the command is shown in the (default) help
-          command. If False, this will place the command in a
-          custconsole.visible_commands dictionary, as well as place
-          it in the custconsole.commands dictionary, which shows all
-          commands. This is defaulted to False.
+    hidden: Optional[:class:`bool`]
+        Controls if the command is shown in the (default) help
+        command. If False, this will place the command in a
+        custconsole.visible_commands dictionary, as well as place
+        it in the custconsole.commands dictionary, which shows all
+        commands. This is defaulted to False.
     """
 
     def decorate(func):
@@ -592,27 +607,28 @@ class custconsole():
     return decorate
   
 class Commands():
-  """Class used to identify, format, and modify the custom console's
-     commands. This class is called automatically by the command
-     decorator and should not be manually called.
+  """
+  Class used to identify, format, and modify the custom console's
+  commands. This class is called automatically by the command
+  decorator and should not be manually called.
 
-     Parameters:
-     -----------
-     ``func : func``
-          The function being created into a command. This is passed
-          so that the function can be called when the user calls it
-          in the command line.
+  Parameters
+  ----------
+  func: :class:`func`
+      The function being created into a command. This is passed
+      so that the function can be called when the user calls it
+      in the command line.
      
-     ``name : str [Optional]``
-          The name/alias of the command. This is the name typed into
-          the console by the user, e.g. 'test'. This name is defaulted
-          to the function name.
+  name: Optional[:class:`str`]
+      The name/alias of the command. This is the name typed into
+      the console by the user, e.g. 'test'. This name is defaulted
+      to the function name.
      
-     ``description : str [Optional]``
-          The description of the command. This is the description]
-          provided in the 'help' command. This parameter is defaulted
-          to the function's docstring. If the docstring is not provided,
-          then it is set to 'No description provided'.
+  description: Optional[:class:`str`]
+      The description of the command. This is the description]
+      provided in the 'help' command. This parameter is defaulted
+      to the function's docstring. If the docstring is not provided,
+      then it is set to 'No description provided'.
   """
 
   def __init__(self, func, **kwargs):
