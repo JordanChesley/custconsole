@@ -2,9 +2,11 @@
 
 ## ** A customizable console (CLI) created by Jordan Chesley.**
 
-CustConsole is a Python module that helps programmers design a customizable console without having to go through the hassle of defining several methods. The main feature of CustConsole is that programmers can define their own custom commands for the console, in which users can call straight from the command line. CustConsole can automatically parse the console input and execute the user-defined methods with an unlimited number of arguments and keyword arguments.
+[![Documentation Status](https://readthedocs.org/projects/custconsole/badge/?version=latest)](https://custconsole.readthedocs.io/en/latest/?badge=latest)
 
-You can find [CustConsole's documentation here]().
+CustConsole is a Python module that helps programmers design a customizable console(s) without having to go through the hassle of defining several methods. The main feature of CustConsole is that programmers can define their own custom commands for the console, in which users can call straight from the command line. CustConsole can automatically parse the console input and execute the user-defined methods with an unlimited number of arguments and keyword arguments.
+
+You can find [CustConsole's documentation here](https://custconsole.readthedocs.io/en/latest/index.html).
 
 You can also [visit the repository here](https://github.com/JordanChesley/custconsole).
 
