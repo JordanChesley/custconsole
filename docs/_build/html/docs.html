@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Documentation &mdash; custconsole 0.0.4 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="License" href="license.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> custconsole
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">custconsole</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/docs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-custconsole.custconsole">
+<span id="documentation"></span><h1>Documentation<a class="headerlink" href="#module-custconsole.custconsole" title="Permalink to this headline">¶</a></h1>
+<p>The base of the console containing the necessary methods
+to run the custom console.</p>
+<dl class="class">
+<dt id="custconsole.custconsole.Commands">
+<em class="property">class </em><code class="sig-prename descclassname">custconsole.custconsole.</code><code class="sig-name descname">Commands</code><span class="sig-paren">(</span><em class="sig-param">func</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.Commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class used to identify, format, and modify the custom console’s
+commands. This class is called automatically by the command
+decorator and should not be manually called.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">func</span> <span class="pre">:</span> <span class="pre">func</span></code></dt><dd><p>The function being created into a command. This is passed
+so that the function can be called when the user calls it
+in the command line.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>The name/alias of the command. This is the name typed into
+the console by the user, e.g. ‘test’. This name is defaulted
+to the function name.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">description</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>The description of the command. This is the description]
+provided in the ‘help’ command. This parameter is defaulted
+to the function’s docstring. If the docstring is not provided,
+then it is set to ‘No description provided’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="custconsole.custconsole.custconsole">
+<em class="property">class </em><code class="sig-prename descclassname">custconsole.custconsole.</code><code class="sig-name descname">custconsole</code><span class="sig-paren">(</span><em class="sig-param">**attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance of the custom console.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>The name of the console. This is defaulted to ‘Custom
+Console’.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">author</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>The name of the author writing the console e.g. your
+name or nickname. This is defaulted to NoneType.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>The version number of your console. This number should
+be regularly updated in relevance to the amount of
+updates you’ve implemented. This is defaulted to ‘0.1’.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.auth_user">
+<code class="sig-name descname">auth_user</code><span class="sig-paren">(</span><em class="sig-param">username=None</em>, <em class="sig-param">pwd=None</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.auth_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to make sure the user enters the right credentials</p>
+<p>during login before giving access to the account.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">username</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>The username of the account to verify.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pwd</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>The user’s login password. This should normally be
+left blank so that the user verifies their password.</p>
+</dd>
+</dl>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span></code></dt><dd><p>Returns ‘True’ if the user’s input matches their
+credentials and therefore are authorized.</p>
+<p>Returns ‘False’ if the user’s input doesn’t match
+their credentials and therefore aren’t authorized.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.command">
+<code class="sig-name descname">command</code><span class="sig-paren">(</span><em class="sig-param">name=None</em>, <em class="sig-param">hidden=False</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.command" title="Permalink to this definition">¶</a></dt>
+<dd><p>A decorator used to define custom commands for your console.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>Name of the command. This is defaulted to the function name.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">description</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>Command’s description. This will default to the function’s
+docstring. If a docstring is not provided, it will then
+default to ‘No description provided.’</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">hidden</span> <span class="pre">:</span> <span class="pre">bool</span> <span class="pre">[Optional]</span></code></dt><dd><p>Controls if the command is shown in the (default) help
+command. If False, this will place the command in a
+custconsole.visible_commands dictionary, as well as place
+it in the custconsole.commands dictionary, which shows all
+commands. This is defaulted to False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.decrypt">
+<code class="sig-name descname">decrypt</code><span class="sig-paren">(</span><em class="sig-param">target</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.decrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrypt an object with the key used to encrypt it.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">:</span> <span class="pre">bytes</span></code></dt><dd><p>The object that is being decrypted.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">:</span> <span class="pre">bytes</span></code></dt><dd><p>The key used to encrypt the given target.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">str</span></code></dt><dd><p>Decrypted object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.encrypt">
+<code class="sig-name descname">encrypt</code><span class="sig-paren">(</span><em class="sig-param">target</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.encrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encrypt an object.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">:</span> <span class="pre">str</span></code></dt><dd><p>The object that is being encrypted.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">bytes</span></code></dt><dd><p>Encrypted object.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bytes</span></code></dt><dd><p>Key used to encrypt the object. This key should be
+used to decrypt the same target.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.help">
+<code class="sig-name descname">help</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.help" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a list of commands to the console.</p>
+<p>These commands are listed by name and description. The
+name is either the name of the function or the value of
+the ‘name’ kwarg (if set). The description is either the
+function’s docstring or the ‘description’ kwarg (if set).
+It is recommended that a ‘description’ kwarg is set up.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.invoke_command">
+<code class="sig-name descname">invoke_command</code><span class="sig-paren">(</span><em class="sig-param">command_string</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.invoke_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes the given command. This is usually the console user’s
+input.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">command_string</span> <span class="pre">:</span> <span class="pre">str</span></code></dt><dd><p>The command and any parameters passed into the command.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">UnknownComandError</span></code></dt><dd><p>Raised when the user calls for a command not found in the
+internal command list.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ArgumentError</span></code></dt><dd><p>Raised when too many or too little arguments are given.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.login">
+<code class="sig-name descname">login</code><span class="sig-paren">(</span><em class="sig-param">auto_reg=True</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prompt a user to login to the console.</p>
+<p>If no user exists in the console, then this function</p>
+<p>automatically calls the register_user() function.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">auto_reg</span> <span class="pre">:</span> <span class="pre">bool</span> <span class="pre">[Optional]</span></code></dt><dd><p>Toggles auto-registration if the console has no
+registered user in it. This is automatically set
+to True. If you do NOT want the console to create
+a user, then set this to False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.logout">
+<code class="sig-name descname">logout</code><span class="sig-paren">(</span><em class="sig-param">force_auth=False</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log out the current console user.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">force_auth</span> <span class="pre">:</span> <span class="pre">bool</span> <span class="pre">[Optional]</span></code></dt><dd><p>Optional parameter. Force the user to authorize
+themselves to confirm their action. This is
+automatically set to False.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BadLogoutCall</span></code></dt><dd><p>Raised when this method is called while no one is
+logged into the console. This will attempt to
+force the console to quit.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.register_user">
+<code class="sig-name descname">register_user</code><span class="sig-paren">(</span><em class="sig-param">username=None</em>, <em class="sig-param">pwd=None</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.register_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register an account to login to the console.</p>
+<p>This is automatically called by the console when there’s</p>
+<p>no available users to login to the console. This can also</p>
+<p>be manually called by the user.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">username</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>The username wished to be registered.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pwd</span> <span class="pre">:</span> <span class="pre">str</span> <span class="pre">[Optional]</span></code></dt><dd><p>The password wished to be used to login to the user.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.remove_command">
+<code class="sig-name descname">remove_command</code><span class="sig-paren">(</span><em class="sig-param">command</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.remove_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a command from the console’s command list.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">:</span> <span class="pre">str</span></code></dt><dd><p>Name of the command to be removed.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">UnknownCommandError</span></code></dt><dd><p>Raised when the given command doesn’t exist in
+the internal command list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="custconsole.custconsole.custconsole.spin">
+<code class="sig-name descname">spin</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">spins</em><span class="sig-paren">)</span><a class="headerlink" href="#custconsole.custconsole.custconsole.spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a fancy looking spinner for your console.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">:</span> <span class="pre">str</span></code></dt><dd><p>This is the text that you want to display next to
+the spinner. This function will automatically
+place a ‘ ‘ space next to the text.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">spins</span> <span class="pre">:</span> <span class="pre">int</span></code></dt><dd><p>The amount of times you want the spinner to spin.
+To help determine the number of spins, the spinner
+spins a full rotation in 0.4 seconds.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-custconsole.errors"></span><p>File containing all the raisable errors for
+the custom console.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="license.html" class="btn btn-neutral float-left" title="License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Jordan Chesley
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
