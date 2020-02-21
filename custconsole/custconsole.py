@@ -200,7 +200,8 @@ class custconsole():
     Prompt a user to login to the console.
        
     If no user exists in the console, then this function
-    automatically calls the :meth:`register_user()` function. 
+    automatically calls the :meth:`custconsole.register_user()`
+    function. 
 
     Parameters
     ----------
@@ -597,6 +598,21 @@ class custconsole():
         custconsole.visible_commands dictionary, as well as place
         it in the custconsole.commands dictionary, which shows all
         commands. This is defaulted to False.
+    
+    Example
+    -------
+    .. code-block:: python
+
+        cc = custconsole.custconsole()
+
+        @cc.command(description='Echos given statement.', hidden=True)
+        def echo(*phrase):
+          print(*phrase)
+        
+        @cc.command()
+        def logout():
+          cc.logout()
+    
     """
 
     def decorate(func):
