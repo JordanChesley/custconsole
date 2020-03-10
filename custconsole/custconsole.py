@@ -6,10 +6,10 @@ to run the custom console.
 __all__ = ['Commands', 'custconsole', 'Help']
 
 import binascii
-from cryptography.fernet import Fernet
 import datetime
 from getpass import getpass
 import os
+import random
 import time
 
 from .errors import InvalidCommandParam, UnknownCommandError, DuplicateCommandError, BadLogoutCall, ArgumentError
@@ -92,9 +92,7 @@ class custconsole():
       pwd = getpass()
     
     __users = {}
-    __keys = {}
     lncount = 0
-    index = 0
 
     # We grab their account information from a bytes file.
     with open('users', 'rb') as f:
@@ -102,22 +100,18 @@ class custconsole():
     for line in cntnt:
       lncount += 1
 
-    # Organize the bytes into a readble format.
-    for _ in range(int(lncount / 2)):
-      line = cntnt[index].decode('utf-8')
-      line = line.strip('\n').split(': ')
-      name = str(line[0])
-      __keys[name] = line[1]
-      index += 1
-      line = cntnt[index].decode('utf-8')
-      line = line.strip('\n').split(': ')
-      __users[name] = line[1]
-      index +=1
+    # Organize the bytes into a readable format.
+    for i in range(int(lncount)):
+      line = cntnt[i].strip(b'\n').split(b': ')
+      name = str(line[0]).replace('b\'', '').replace('\'', '')
+      encPwd = bytes(line[1])
+      encPwd = encPwd.replace(b'b\'', b'').replace(b'\'', b'')
+      __users[name] = encPwd
 
     # Here starts the actual authorization process.
     for __user in __users:
       if __user == username:
-        if self.decrypt(bytes(__users[username].replace('b\'', '\''), 'utf-8'), bytes(__keys[username].replace('b\'', '\''), 'utf-8')) == pwd:
+        if self.decrypt(bytes(__users[username])) == pwd:
           return True
     return False
 
@@ -151,7 +145,6 @@ class custconsole():
     # We also ensure that the user being registered doesn't already exist
     # in the user list.
     lncount = 0
-    index = 0
     users = []
 
     with open('users', 'rb') as f:
@@ -159,11 +152,11 @@ class custconsole():
     for line in cntnt:
       lncount += 1
       
-    for _ in range(int(lncount/2)):
-      line = cntnt[index].decode('utf-8')
+    for i in range(int(lncount)):
+      line = cntnt[i].decode('utf-8')
       line = line.strip('\n').split(': ')
       users.append(line[0])
-      index += 2
+      i += 1
 
     if username in users:
       print('User already exists. Please use a different username.')
@@ -180,16 +173,12 @@ class custconsole():
     # parameters and just ask to verify the password again.
     vp = getpass(f'Verify password for new user {username}: ')
     if pwd == vp:
-      encPwd, key = self.encrypt(pwd)
+      encPwd = self.encrypt(pwd)
 
-      # Spreads information across two lines for easy parsing. The username
-      # is put on to each line for clarification which key is used for which
-      # user.
-      lineOne= f'{username}: {key}\n'.encode('utf-8')
-      lineTwo = f'{username}: {encPwd}\n'.encode('utf-8')
+      # Insert information onto one line.
+      line = f'{username}: {encPwd}\n'.encode('utf-8')
       with open('users', 'ab') as f:
-        f.write(lineOne)
-        f.write(lineTwo)
+        f.write(line)
       self.spin(f'Registering {username}...', 3)
       print(f'Registered {username}.')
     else:
@@ -312,20 +301,31 @@ class custconsole():
     -------
     :class:`bytes`
         Encrypted object.
-       
-    :class:`bytes`
-        Key used to encrypt the object. This key should be
-        used to decrypt the same target.
     """
 
-    # Fernet makes a randomly generated key. We then use that key
-    # and have Fernet encrypt our string with it.
-    key = Fernet.generate_key()
-    target = target.encode()
-    enc = Fernet(key).encrypt(target)
-    return enc, key
+    # Convert target to B64 bytes.
+    conv = binascii.b2a_base64(target.encode(), newline=False)
+
+    # If necessary, we translate to a simpler format.
+    conv = conv.translate(bytes.maketrans(b'+/', b'-_'))
+
+    # Generate throwoff bytes.
+    _key = ''
+    alphanumeric = 'abcdefghijklmnopqrstuvwxyz0123456789'
+    for _ in range(len(target)):
+      place = random.randint(0, 35)
+      _key += alphanumeric[place:place+1]
+    _key = binascii.b2a_base64(_key.encode(), newline=False)
+    _key = _key.translate(bytes.maketrans(b'+/', b'-_'))
+
+    # Implement throwoff into encryption.
+    enc = b''
+    for i in range(len(conv)):
+      enc += conv[i:i+1] + _key[i:i+1]
+
+    return enc
   
-  def decrypt(self, target, key):
+  def decrypt(self, target):
     """
     Decrypt an object with the key used to encrypt it.
 
@@ -333,20 +333,25 @@ class custconsole():
     ----------
     target: :class:`bytes`
         The object that is being decrypted.
-      
-    key: :class:`bytes`
-        The key used to encrypt the given target.
-
+    
     Returns
     -------
     :class:`str`
         Decrypted object.
     """
 
-    # We pass our generated key to Fernet so it can
-    # properly decrypt our string.
-    target = Fernet(key).decrypt(target)
-    dyc = target.decode()
+    # Grab the real encrypted target.
+    real = b''
+    for i in range(len(target)):
+      if i % 2 == 0:
+        real += target[i:i+1]
+
+    # If necessary, transalate to B64 format.
+    real = real.translate(bytes.maketrans(b'-_', b'+/'))
+
+    # Translate in ASCII bytes. Then stringify it.
+    dyc = str(binascii.a2b_base64(real)).replace('b\'', '').replace('\'','')
+
     return dyc
   
   def help(self):
