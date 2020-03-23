@@ -45,7 +45,7 @@ class DuplicateCommandError(CustConsoleException):
     super().__init__(f'Command \'{command}\' is defined more than once in the console script.')
 
 class BadLogoutCall(CustConsoleException):
-  """Raised when custconsole.logout() is unnecessarily called.
+  """Raised when :meth:`custconsole.logout()` is unnecessarily called.
      This is most likely due to a scripting error."""
   __module__ = 'builtins'
   def __init__(self):
