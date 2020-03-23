@@ -184,16 +184,27 @@ class custconsole():
     else:
       self.register_user(username, pwd)
 
-  def login(self, auto_reg=True):
+  def login(self, username=None, pwd=None, auto_reg=True):
     """
     Prompt a user to login to the console.
        
     If no user exists in the console, then this function
     automatically calls the :meth:`custconsole.register_user()`
-    function. 
+    function.
+
+    The console programmer may also want to automatically login
+    a user when the console runs. They may optionally pass the
+    username and password as kwargs to automatically login the
+    user.
 
     Parameters
     ----------
+    username: Optional[:class:`str`]
+        The username of the account to login with.
+    
+    pwd: Optional[:class:`str`]
+        The password of the account to login with.
+    
     auto_reg: Optional[:class:`bool`]
         Toggles auto-registration if the console has no
         registered user in it. This is automatically set
@@ -201,6 +212,8 @@ class custconsole():
         a user, then set this to False.
     """
 
+    loginUsername = username
+    loginPwd = pwd
     if auto_reg:
       # Let's first check to see if any users currently exist.
       with open('users', 'rb') as f:
@@ -215,8 +228,9 @@ class custconsole():
     
     # We then continue to login.
     while True:
-      loginUsername = input('\nUsername: ')
-      loginPwd = getpass()
+      if loginUsername == None:
+        loginUsername = input('\nUsername: ')
+        loginPwd = getpass()
       if self.auth_user(loginUsername, loginPwd):
         self.current_user = loginUsername
         self.spin('Logging in...', 2)
