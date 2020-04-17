@@ -10,7 +10,7 @@ In any case, what you want is the update information. Here's what new and/or mod
 
 * **Encryption / Decryption Remake**
 * **Added automatic login feature for *custconsole.login()***
-* All documentation ahs been updated. Remember [you can find the documentation at ReadTheDocs](https://custconsole.readthedocs.io/en/latest/index.html).
+* All documentation has been updated. Remember [you can find the documentation at ReadTheDocs](https://custconsole.readthedocs.io/en/latest/index.html).
 
 
 
