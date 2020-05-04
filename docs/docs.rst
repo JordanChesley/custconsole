@@ -1,16 +1,16 @@
 Documentation
 =============
 
-.. automodule:: custconsole.custconsole
+.. currentmodule:: custconsole
 
 CustConsole Class
 ^^^^^^^^^^^^^^^^^
-.. autoclass:: custconsole
+.. autoclass:: custconsole.custconsole
   :members:
 
 Commands Class
 ^^^^^^^^^^^^^^
-.. autoclass:: Commands
+.. autoclass:: custconsole.Commands
   :members:
 
 Raisable Exceptions
